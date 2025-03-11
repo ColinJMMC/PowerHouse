@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #1a1a1a;
+    background-color: #0D0B00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,11 +8,14 @@ body {
 }
 
 .container {
+    width: 90%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
+    background-color: #0D0B00;
     padding: 20px;
+    margin: 10% 5%;
     position: relative; 
 }
 
@@ -45,7 +48,7 @@ body {
 .center-box {
     width: 90%;
     height: 200px;
-    background-color: black;
+    background-color: #0D0B00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +70,7 @@ body {
 }
 
 .top-right {
-    height: 630px;
+    height: 100%;
     position: absolute;
     right: 0;
     top: 0;
