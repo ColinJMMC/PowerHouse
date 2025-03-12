@@ -1,25 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Powerhouse Layout</title>
+    <title>Powerhouse Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="top-section">
-            <div class="box top-left"></div>
-            <div class="box top-center"></div>
-            <div class="box top-right"></div>
+        <!-- Left Column (Full Height) -->
+        <div class="box house-temp">
+            <div class="title">Huis</div>
+            <div class="circle"><span>19°</span></div>
         </div>
-        <div class="middle-section">
-            <div class="center-box">
-                <img src="image.png" alt="Powerhouse Logo">
+
+        <!-- Middle Column (Top) -->
+        <div class="box lamp-status">
+            <div class="title">Lampen</div>
+            <div class="lamps">
+                <div class="lamp on">1</div>
+                <div class="lamp off">2</div>
+                <div class="lamp off">3</div>
             </div>
         </div>
-        <div class="bottom-section">
-            <div class="box bottom-left"></div>
+
+        <!-- Right Column (Full Height) -->
+        <div class="box weather">
+            <div class="weather-info">
+                <div class="title">Vandaag</div>
+                <div class="circle"><span>6°</span></div>
+            </div>
+            <div class="weather-info">
+                <div class="title">Morgen</div>
+                <div class="circle"><span>3°</span></div>
+            </div>
+        </div>
+
+        <!-- Middle Column (Middle, Larger Image) -->
+        <div class="logo-container">
+            <img src="image.png" alt="Powerhouse Logo">
+        </div>
+
+        <!-- Bottom Row (Spanning 2 Columns) -->
+        <div class="box energy-usage">
+            <div class="title">Energie Verbruik</div>
+            <div class="usage">
+                <div class="time-slot">
+                    <div>Ochtend</div>
+                    <div class="circle">20%</div>
+                </div>
+                <div class="time-slot">
+                    <div>Middag</div>
+                    <div class="circle">70%</div>
+                </div>
+                <div class="time-slot">
+                    <div>Avond</div>
+                    <div class="circle">60%</div>
+                </div>
+                <div class="time-slot">
+                    <div>Nacht</div>
+                    <div class="circle">5%</div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
