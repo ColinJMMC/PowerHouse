@@ -39,16 +39,17 @@ body {
 }
 
 .circle {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 5px solid yellow;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 70px;
     font-weight: bold;
     background-color: #223;
+    margin: 0 auto;
 }
 
 /* Lamp status */
