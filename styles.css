@@ -236,12 +236,12 @@ body {
 }
 
 .light-mode .box {
-    background-color: white;
+    background-color: rgb(228, 208, 241);
     border: 5px solid #d47afa; /* Purple Border */
 }
 
 .light-mode .circle {
-    background-color: #ddd;
+    background-color: #f2dbff;
     color: black;
     border: 5px solid #d47afa; /* Purple Circle Border */
 }
