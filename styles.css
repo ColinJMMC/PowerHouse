@@ -120,6 +120,10 @@ body {
     margin-top: 5px;
 }
 
+.box:hover {
+    box-shadow: 0px 0px 20px rgba(255, 255, 0, 0.6); /* Subtle glow */
+}
+
 /* Adjust Image Size */
 .logo-container {
     grid-column: 2; /* Keep it in the middle column */
@@ -159,4 +163,143 @@ body {
 .energy-usage {
     grid-column: 1 / span 2; /* Makes it span across 2 columns */
     grid-row: 3;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .box {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .circle {
+        width: 150px;
+        height: 150px;
+        font-size: 50px;
+    }
+
+    .lamp {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+
+/* === Logo Animation (No Position Change) === */
+.logo-container img {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* === Logo Hover Effect === */
+.logo-container img:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* === Keyframes for Flickering Lamp Effect === */
+@keyframes flicker {
+    0% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+/* === Lamp ON Animation (Green Light) === */
+.lamp.on {
+    background-color: green;
+    border: 3px solid yellow;
+    box-shadow: 0 0 15px greenyellow; /* Glow effect when ON */
+    animation: flicker 1.5s infinite alternate ease-in-out; /* Light flickering */
+}
+
+/* === Lamp OFF Animation (Red Light) === */
+.lamp.off {
+    background-color: red;
+    border: 3px solid yellow;
+}
+/* === Circle Hover Effect === */
+.circle:hover {
+    background-color: #637bac;
+    box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.6);
+}
+/* Light Mode Styles - Purple Theme */
+.light-mode {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+.light-mode .box {
+    background-color: white;
+    border: 5px solid #d47afa; /* Purple Border */
+}
+
+.light-mode .circle {
+    background-color: #ddd;
+    color: black;
+    border: 5px solid #d47afa; /* Purple Circle Border */
+}
+
+/* Lamp Styling in Light Mode */
+.light-mode .lamp.on {
+    background-color: green;
+    border: 5px solid #d47afa;
+}
+
+.light-mode .lamp.off {
+    background-color: red;
+    border: 5px solid #d47afa;
+}
+
+/* Update Logo in Light Mode */
+.light-mode .logo-container img {
+    content: url("imagePurp.png"); /* Change to Purple Logo */
+}
+
+/* Light Mode Button */
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #d47afa; /* Purple Button */
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.mode-toggle:hover {
+    background-color: #b362d1; /* Slightly Darker Purple */
+}
+/* Default Glow (Yellow) */
+.box:hover {
+    box-shadow: 0px 0px 20px rgba(255, 255, 0, 0.6);
+}
+
+/* Light Mode Glow (Purple) */
+.light-mode .box:hover {
+    box-shadow: 0px 0px 20px rgba(212, 122, 250, 0.6); /* Purple Glow */
+}
+/* Light Mode - Purple Borders */
+.light-mode .box,
+.light-mode .circle {
+    border-color: #d47afa;
+}
+
+/* Light Mode - Purple Glow for Active Elements */
+.light-mode .lamp.on {
+    box-shadow: 0px 0px 15px rgba(212, 122, 250, 0.6);
+}
+
+.light-mode .circle:hover {
+    box-shadow: 0px 0px 15px rgba(212, 122, 250, 0.6);
 }
