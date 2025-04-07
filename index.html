@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <!-- Left Column (Full Height) -->
-        <div class="box house-temp">
+        <!-- House Temperature -->
+        <div class="box house-temp draggable" id="house-temp">
             <div class="title">Huis</div>
             <div class="circle"><span>19°</span></div>
         </div>
 
-        <!-- Middle Column (Top) -->
-        <div class="box lamp-status">
+        <!-- Lamp Status -->
+        <div class="box lamp-status draggable" id="lamp-status">
             <div class="title">Lampen</div>
             <div class="lamps">
                 <div class="lamp on">1</div>
@@ -24,51 +24,65 @@
             </div>
         </div>
 
-        <!-- Right Column (Full Height) -->
-        <div class="box weather">
-            <div class="weather-info">
+        <!-- Weather Section -->
+        <div class="box weather draggable" id="weather">
+            <div class="weather-info" id="weather-today">
                 <div class="title">Vandaag</div>
                 <div class="circle"><span id="todayTemp">--°</span></div>
             </div>
-            <div class="weather-info">
+            <div class="weather-info" id="weather-tomorrow">
                 <div class="title">Morgen</div>
                 <div class="circle"><span id="tomorrowTemp">--°</span></div>
             </div>
+
+            <!-- Expand Weekly Forecast -->
+            <button class="expand-forecast" id="expandWeather">▶ Meer weer</button>
+            <div class="weekly-forecast" id="weeklyForecast"></div>
         </div>
 
-        <!-- Middle Column (Middle, Larger Image) -->
-        <div class="logo-container">
+        <!-- Weather Search Bar -->
+        <div class="box search-weather">
+            <input type="text" id="cityInput" placeholder="Voer een stad in">
+            <button id="searchWeather">Zoek Weer</button>
+        </div>
+              
+
+        <!-- Button to navigate to Wereld Kaart -->
+        <div class="box">
+          <button class="map-button" onclick="window.location.href='wereldkaart.html'">🌍 Wereld Kaart</button>
+        </div>
+
+        <!-- Logo -->
+        <div class="logo-container draggable" id="logo-container">
             <img src="image.png" alt="Powerhouse Logo">
         </div>
 
-        <!-- Bottom Row (Spanning 2 Columns) -->
-        <div class="box energy-usage">
+        <!-- Energy Usage -->
+        <div class="box energy-usage draggable" id="energy-usage">
             <div class="title">Energie Verbruik</div>
             <div class="usage">
-                <div class="time-slot">
-                    <div>Ochtend</div>
-                    <div class="circle">20%</div>
-                </div>
-                <div class="time-slot">
-                    <div>Middag</div>
-                    <div class="circle">70%</div>
-                </div>
-                <div class="time-slot">
-                    <div>Avond</div>
-                    <div class="circle">60%</div>
-                </div>
-                <div class="time-slot">
-                    <div>Nacht</div>
-                    <div class="circle">5%</div>
-                </div>
+                <div class="time-slot"><div>Ochtend</div><div class="circle">20%</div></div>
+                <div class="time-slot"><div>Middag</div><div class="circle">70%</div></div>
+                <div class="time-slot"><div>Avond</div><div class="circle">60%</div></div>
+                <div class="time-slot"><div>Nacht</div><div class="circle">5%</div></div>
             </div>
         </div>
     </div>
     
+    <!-- Weather Chatbot UI -->
+<div id="chatbot-container">
+    <div id="chat-header">🌦️ Weather Bot <button onclick="toggleChat()">✖</button></div>
+    <div id="chat-body"></div>
+    <div id="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Vraag over het weer..." onkeypress="handleChat(event)">
+        <button onclick="sendChat()">➤</button>
+    </div>
+</div>
+
+
     <!-- Dark/Light Mode Toggle -->
-<button class="mode-toggle" id="modeToggle">🌞 Light Mode</button>
+    <button class="mode-toggle" id="modeToggle">🌞 Light Mode</button>
 
-
-    <script src="script.js"></script>  <!-- Include JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>

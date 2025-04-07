@@ -164,6 +164,25 @@ body {
     grid-column: 1 / span 2; /* Makes it span across 2 columns */
     grid-row: 3;
 }
+body {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.light-mode {
+    background-color: #f4f4f4;
+    color: black;
+}
+
+.light-mode .box {
+    background-color: rgb(228, 208, 241);
+    border: 5px solid #d47afa;
+}
+
+/* Smooth Button Transition */
+.mode-toggle {
+    transition: background-color 0.3s ease-in-out;
+}
+
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -276,6 +295,293 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
+.weekly-forecast {
+    display: none;
+    background-color: #223;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid yellow;
+    color: yellow;
+    text-align: center;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+.weekly-forecast div {
+    margin: 5px 0;
+}
+
+/* Expand button */
+.expand-forecast {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.expand-forecast:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+.search-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.search-weather input {
+    padding: 8px;
+    border: 2px solid yellow;
+    background-color: #223;
+    color: yellow;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.search-weather button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-weather button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+.mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #d47afa;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.mode-toggle:hover {
+    background-color: #b362d1;
+    transform: scale(1.05);
+}
+.box {
+    background-color: #223;
+    border: 5px solid yellow;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Make text and numbers clearer */
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    color: yellow;
+}
+
+/* Make sure circles inside the dashboard are well-styled */
+.circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: #415289;
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.circle:hover {
+    background-color: #637bac;
+    box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.6);
+}
+.lamp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: yellow;
+    transition: all 0.3s ease-in-out;
+}
+
+.lamp.on {
+    background-color: green;
+    border: 3px solid yellow;
+    box-shadow: 0 0 15px greenyellow;
+    animation: flicker 1.5s infinite alternate ease-in-out;
+}
+
+.lamp.off {
+    background-color: red;
+    border: 3px solid yellow;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+.draggable {
+    cursor: grab;
+    transition: all 0.3s ease-in-out;
+}
+
+.draggable:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+/* Light Mode Adjustments */
+.light-mode .box {
+    background-color: rgb(228, 208, 241); /* Light Purple Box */
+    border: 5px solid #d47afa; /* Purple Border */
+}
+
+.light-mode .circle {
+    background-color: #f2dbff; /* Light Purple Circle */
+    color: black;
+    border: 5px solid #d47afa; /* Purple Circle Border */
+}
+
+/* Update Text Color to Purple */
+.light-mode .title,
+.light-mode .circle span,
+.light-mode .usage div,
+.light-mode .lamp {
+    color: #d47afa !important; /* Purple Text */
+}
+
+/* Lamp Styling in Light Mode */
+.light-mode .lamp.on {
+    background-color: green;
+    border: 5px solid #d47afa;
+}
+
+.light-mode .lamp.off {
+    background-color: red;
+    border: 5px solid #d47afa;
+}
+
+/* Light Mode Glow Effect */
+.light-mode .box:hover {
+    box-shadow: 0px 0px 20px rgba(212, 122, 250, 0.6); /* Purple Glow */
+}
+
+/* Light Mode - Purple Borders */
+.light-mode .box,
+.light-mode .circle {
+    border-color: #d47afa;
+}
+
+/* Light Mode - Purple Glow for Active Elements */
+.light-mode .lamp.on {
+    box-shadow: 0px 0px 15px rgba(212, 122, 250, 0.6);
+}
+
+.light-mode .circle:hover {
+    box-shadow: 0px 0px 15px rgba(212, 122, 250, 0.6);
+}
+
+/* Light Mode Button Fix */
+.light-mode .expand-forecast,
+.light-mode .search-weather button {
+    background-color: #d47afa;
+    color: black;
+}
+
+.light-mode .expand-forecast:hover,
+.light-mode .search-weather button:hover {
+    background-color: #b362d1;
+}
+/* 🌦️ Weather Icons */
+.weather-icon {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+/* 🟡 Weekly Forecast Styling */
+.forecast-day {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: yellow;
+}
+
+
+/* 🌧️ Rain Animation */
+.rainy::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("https://i.imgur.com/5U6AATW.png"); /* Light rain overlay */
+    opacity: 0.2;
+    animation: rain 0.5s linear infinite;
+}
+
+@keyframes rain {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* ❄️ Snow Animation */
+.snowy::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("https://i.imgur.com/N9R7Ptj.png"); /* Snow overlay */
+    opacity: 0.3;
+    animation: snow 3s linear infinite;
+}
+
+@keyframes snow {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 100px; }
+}
+
+/* Light Mode - Input Field Fix */
+.light-mode .search-weather input {
+    background-color: #f2dbff;
+    border: 2px solid #d47afa;
+    color: black;
+}
+
+/* Light Mode - Fix Yellow Text in Forecast */
+.light-mode .weekly-forecast {
+    color: #d47afa !important; /* Purple Text */
+    border: 2px solid #d47afa; /* Purple Border */
+    background-color: rgba(210, 180, 255, 0.2); /* Slightly Lighter Background */
+}
 
 .mode-toggle:hover {
     background-color: #b362d1; /* Slightly Darker Purple */
@@ -284,6 +590,477 @@ body {
 .box:hover {
     box-shadow: 0px 0px 20px rgba(255, 255, 0, 0.6);
 }
+
+
+.map-button {
+    background-color: yellow;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.map-button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+/* Fullscreen Map */
+#map {
+    width: 100%;
+    height: 80vh;
+    border: 5px solid yellow;
+}
+
+/* Weather Info Box */
+#weather-info {
+    margin: 20px;
+    padding: 15px;
+    background-color: #223;
+    color: yellow;
+    border-radius: 10px;
+    border: 3px solid yellow;
+    text-align: center;
+}
+.light-mode #weather-info {
+    background-color: rgb(228, 208, 241);
+    color: #d47afa;
+    border: 3px solid #d47afa;
+}
+
+/* 🌙 Dark Mode Buttons */
+.map-button {
+    background-color: yellow;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.map-button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+
+/* 🌞 Light Mode Buttons */
+.light-mode .map-button {
+    background-color: #d47afa; /* Purple */
+    color: black;
+}
+
+.light-mode .map-button:hover {
+    background-color: #b362d1;
+}
+
+/* Reset Button */
+#resetPins {
+    background-color: yellow;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+/* Map Border - Default (Dark Mode) */
+#map {
+    width: 100%;
+    height: 80vh;
+    border: 5px solid yellow;
+}
+
+/* Rain Effect */
+.rainy::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("https://i.imgur.com/5U6AATW.png");
+    opacity: 0.2;
+    animation: rain 0.5s linear infinite;
+}
+
+@keyframes rain {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* Snow Effect */
+.snowy::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("https://i.imgur.com/N9R7Ptj.png");
+    opacity: 0.3;
+    animation: snow 3s linear infinite;
+}
+
+@keyframes snow {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 100px; }
+}
+
+/* 🌙 Default Dark Mode Buttons */
+.map-button, #resetPins, #weather-info button {
+    background-color: yellow;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.map-button:hover, #resetPins:hover, #weather-info button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+
+/* 🌞 Light Mode Buttons */
+.light-mode .map-button, .light-mode #resetPins, .light-mode #weather-info button {
+    background-color: #d47afa; /* Purple */
+    color: black;
+}
+
+.light-mode .map-button:hover, .light-mode #resetPins:hover, .light-mode #weather-info button:hover {
+    background-color: #b362d1;
+}
+
+/* 🔗 Saved Locations List */
+#locations-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#locations-list li {
+    cursor: pointer;
+    font-size: 18px;
+    margin: 5px 0;
+    padding: 8px;
+    background-color: rgba(212, 122, 250, 0.2);
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+#locations-list li:hover {
+    background-color: #d47afa;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* 🌍 Search Bar Styling */
+.search-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #223;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid yellow;
+}
+
+/* 🌦️ Chatbot Button */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+#chatbot-toggle:hover {
+    background-color: #d4af37;
+}
+
+.light-mode #chatbot-toggle {
+    background-color: #d47afa;
+    color: black;
+}
+
+.light-mode #chatbot-toggle:hover {
+    background-color: #b362d1;
+}
+
+/* 🌦️ Chatbot UI */
+#chatbot-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background-color: #223;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.3);
+}
+
+.light-mode #chatbot-container {
+    background-color: rgb(228, 208, 241);
+    border: 2px solid #d47afa;
+}
+
+#chat-header {
+    background-color: yellow;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.light-mode #chat-header {
+    background-color: #d47afa;
+}
+
+#chat-body {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+#chat-input-container {
+    display: flex;
+    padding: 10px;
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 2px solid yellow;
+    background-color: #223;
+    color: yellow;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+
+
+.light-mode #chat-input {
+    background-color: white;
+    border: 2px solid #d47afa;
+    color: black;
+}
+
+#chat-input-container button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 8px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.light-mode #chat-input-container button {
+    background-color: #d47afa;
+    color: black;
+}
+
+#chat-body .user-message {
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0;
+    text-align: right;
+}
+
+.light-mode #chat-body .user-message {
+    background-color: #d47afa;
+}
+
+#chat-body .bot-message {
+    background-color: #444;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+.light-mode #chat-body .bot-message {
+    background-color: #e0d6f8;
+    color: black;
+}
+
+.light-mode .search-container {
+    background-color: rgb(228, 208, 241);
+    border: 2px solid #d47afa;
+}
+
+.search-container input {
+    padding: 8px;
+    border: 2px solid yellow;
+    background-color: #223;
+    color: yellow;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+.light-mode .search-container input {
+    background-color: white;
+    border: 2px solid #d47afa;
+    color: black;
+}
+
+.search-container button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-container button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+
+.light-mode .search-container button {
+    background-color: #d47afa;
+    color: black;
+}
+
+.light-mode .search-container button:hover {
+    background-color: #b362d1;
+}
+
+/* 🗑 Remove Saved Locations Button */
+#clearSaved {
+    background-color: yellow;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Style for Saved Locations List */
+#locations-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#locations-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin: 5px 0;
+    padding: 8px;
+    background-color: rgba(212, 122, 250, 0.2);
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+#locations-list li span {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+#locations-list li:hover {
+    background-color: #d47afa;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Trash Button */
+.delete-location {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-location:hover {
+    transform: scale(1.2);
+}
+
+#clearSaved:hover {
+    background-color: #d4af37;
+}
+
+.light-mode #clearSaved {
+    background-color: #d47afa;
+    color: black;
+}
+
+.light-mode #clearSaved:hover {
+    background-color: #b362d1;
+}
+
+/* Light Mode - Change Yellow Border to Purple */
+.light-mode #map {
+    border: 5px solid #d47afa;
+}
+
+#resetPins:hover {
+    background-color: #d4af37;
+}
+
+.light-mode #resetPins {
+    background-color: #d47afa;
+    color: black;
+}
+
+.light-mode #resetPins:hover {
+    background-color: #b362d1;
+}
+
 
 /* Light Mode Glow (Purple) */
 .light-mode .box:hover {

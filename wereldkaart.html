@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wereld Kaart - Weer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body onload="checkMode()">
+
+    <!-- Back Button -->
+    <button class="map-button" onclick="window.location.href='index.html'">🏠 Terug naar Dashboard</button>
+
+    <!-- Map -->
+    <div id="map"></div>
+
+    <!-- Weather Info -->
+    <div id="weather-info" class="box">
+        <h2>Weer Informatie</h2>
+        <p><strong>Locatie:</strong> <span id="location-name">Klik op een plek op de kaart</span></p>
+        <p><strong>Temperatuur:</strong> <span id="temperature">-</span>°C</p>
+        <p><strong>Vochtigheid:</strong> <span id="humidity">-</span>%</p>
+        <p><strong>Wind Snelheid:</strong> <span id="wind-speed">-</span> m/s</p>
+        <p><strong>Weer:</strong> <span id="weather-desc">-</span></p>
+        <button onclick="saveLocation()">⭐ Opslaan</button>
+    </div>
+
+<!-- Saved Locations -->
+<div id="saved-locations" class="box">
+    <h2>Opgeslagen Locaties</h2>
+    <ul id="locations-list"></ul>
+</div>
+
+
+    <!-- Reset Pins Button -->
+    <button id="resetPins" onclick="resetMapPins()">Reset Pins</button>
+
+    <!-- Search Bar (Moved to Bottom) -->
+    <div class="search-container">
+        <input type="text" id="citySearch" placeholder="Voer een stad in...">
+        <button onclick="searchCityWeather()">🔎 Zoek Stad</button>
+    </div>
+
+    <script src="map-script.js"></script>
+</body>
+</html>
