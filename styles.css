@@ -88,8 +88,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 100%;
-    grid-row: span 3; /* Makes it stretch down */
+  
 }
 
 /* Energie Verbruik section */
@@ -148,11 +147,6 @@ body {
 .lamp-status {
     grid-column: 2;
     grid-row: 1;
-}
-
-.weather {
-    grid-column: 3;
-    grid-row: 1 / span 3; /* Makes it full height */
 }
 
 .logo-container {
@@ -815,108 +809,40 @@ body {
 .light-mode #chatbot-toggle:hover {
     background-color: #b362d1;
 }
-
-/* 🌦️ Chatbot UI */
-#chatbot-container {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    max-height: 400px;
-    background-color: #223;
-    border: 2px solid yellow;
-    border-radius: 10px;
-    display: none;
-    flex-direction: column;
-    box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.3);
-}
-
-.light-mode #chatbot-container {
-    background-color: rgb(228, 208, 241);
-    border: 2px solid #d47afa;
-}
-
-#chat-header {
-    background-color: yellow;
-    color: black;
+/* Buttons within energy usage box */
+.energy-usage button {
     padding: 10px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.light-mode #chat-header {
-    background-color: #d47afa;
-}
-
-#chat-body {
-    flex-grow: 1;
-    padding: 10px;
-    overflow-y: auto;
-    max-height: 250px;
-}
-
-#chat-input-container {
-    display: flex;
-    padding: 10px;
-}
-
-#chat-input {
-    flex-grow: 1;
-    padding: 8px;
-    border: 2px solid yellow;
-    background-color: #223;
-    color: yellow;
-    border-radius: 5px;
-    font-size: 14px;
-    outline: none;
-}
-
-
-
-.light-mode #chat-input {
-    background-color: white;
-    border: 2px solid #d47afa;
-    color: black;
-}
-
-#chat-input-container button {
-    background-color: yellow;
-    color: black;
+    margin-top: 10px;
     border: none;
-    padding: 8px 10px;
-    font-weight: bold;
-    cursor: pointer;
     border-radius: 5px;
-}
-
-.light-mode #chat-input-container button {
-    background-color: #d47afa;
-    color: black;
-}
-
-#chat-body .user-message {
     background-color: yellow;
     color: black;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 5px 0;
-    text-align: right;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 115%;
+    grid-row: span 3; /* Keeps it stretched down */
+    margin-top: 0px; /* Adjust this value as needed to align with the Wereld Kaart box */
 }
 
-.light-mode #chat-body .user-message {
+.energy-usage button:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+}
+
+/* Light mode button styling */
+.light-mode .energy-usage button {
     background-color: #d47afa;
+    color: black;
 }
 
-#chat-body .bot-message {
-    background-color: #444;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 5px 0;
-    text-align: left;
+.light-mode .energy-usage button:hover {
+    background-color: #b362d1;
 }
 
 .light-mode #chat-body .bot-message {

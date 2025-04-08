@@ -10,20 +10,12 @@ modeToggle.addEventListener("click", () => {
     modeToggle.textContent = document.body.classList.contains("light-mode") ? "🌙 Dark Mode" : "🌞 Light Mode";
 });
 
-// 🌟 Restore Mode Preference
-document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("lightMode") === "true") {
-        document.body.classList.add("light-mode");
-        document.querySelector(".logo-container img").src = "imagePurp.png";
-        modeToggle.textContent = "🌙 Dark Mode";
-    }
-});
-
 // 🛠️ Expand Weekly Forecast (Meer Weer)
 document.getElementById("expandWeather").addEventListener("click", () => {
     const forecast = document.getElementById("weeklyForecast");
     forecast.style.display = (forecast.style.display === "none" || forecast.style.display === "") ? "block" : "none";
 });
+
 
 // 🌍 Fetch Weather Data
 async function fetchWeather(city) {
@@ -111,6 +103,58 @@ function getLocation() {
     }
 }
 
+// Toggle Chart and Circles display
+document.getElementById('showChart').addEventListener('click', function() {
+    document.querySelector('.usage').style.display = 'none';
+    document.getElementById('energyChart').style.display = 'block';
+    document.getElementById('showCircles').style.display = 'block';
+    document.getElementById('showChart').style.display = 'none';
+    renderChart();
+});
+
+document.getElementById('showCircles').addEventListener('click', function() {
+    document.querySelector('.usage').style.display = 'flex';
+    document.getElementById('energyChart').style.display = 'none';
+    document.getElementById('showCircles').style.display = 'none';
+    document.getElementById('showChart').style.display = 'block';
+});
+
+function renderChart() {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+                label: 'Energy Usage (kWh)',
+                data: [12, 19, 3, 5, 2, 3, 40],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 3,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Energy Used (kWh)'
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            elements: {
+                line: {
+                    tension: 0.3
+                }
+            }
+        }
+    });
+}
+
 // 🌍 Fetch Weather by Location
 async function fetchWeatherByLocation(lat, lon) {
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`;
@@ -157,23 +201,45 @@ async function getUserIP() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".lamp").forEach(lamp => {
-        lamp.addEventListener("click", () => {
-            lamp.classList.toggle("on");
-            lamp.classList.toggle("off");
-            saveLampState();
-        });
-    });
+const espIP = "http://172.20.10.11"; // <- your ESP IP
 
-    function saveLampState() {
-        let lampStates = [];
-        document.querySelectorAll(".lamp").forEach(lamp => {
-            lampStates.push(lamp.classList.contains("on") ? "on" : "off");
+document.querySelectorAll(".lamp").forEach((lamp, index) => {
+    lamp.addEventListener("click", () => {
+        const isOn = lamp.classList.contains("on");
+        const newState = isOn ? "off" : "on";
+        const lampNumber = index + 1;
+        const url = `${espIP}/lamp${lampNumber}/${newState}`;
+
+        fetch(url)
+            .then(() => {
+                lamp.classList.toggle("on");
+                lamp.classList.toggle("off");
+            })
+            .catch(err => console.error("ESP8266 not reachable:", err));
+    });
+});
+
+function updateHouseTemp() {
+    fetch(`https://cors-anywhere.herokuapp.com/http://172.20.10.11/temperature`)
+        .then(res => res.json())
+        .then(data => {
+            const temp = Math.round(data.temperature);
+            document.getElementById("houseTemp").innerText = `${temp}°`;
+        })
+        .catch(err => {
+            console.error("Failed to load house temp:", err);
         });
-        localStorage.setItem("lampStates", JSON.stringify(lampStates));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 🌙 Load light mode
+    if (localStorage.getItem("lightMode") === "true") {
+        document.body.classList.add("light-mode");
+        document.querySelector(".logo-container img").src = "imagePurp.png";
+        modeToggle.textContent = "🌙 Dark Mode";
     }
 
+    // 💡 Load lamp states
     function loadLampState() {
         let savedLamps = JSON.parse(localStorage.getItem("lampStates"));
         if (!savedLamps) return;
@@ -183,8 +249,31 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // 💾 Save lamp states
+    function saveLampState() {
+        let lampStates = [];
+        document.querySelectorAll(".lamp").forEach(lamp => {
+            lampStates.push(lamp.classList.contains("on") ? "on" : "off");
+        });
+        localStorage.setItem("lampStates", JSON.stringify(lampStates));
+    }
+
+    // 🖱️ Lamp click listeners
+    document.querySelectorAll(".lamp").forEach(lamp => {
+        lamp.addEventListener("click", () => {
+            lamp.classList.toggle("on");
+            lamp.classList.toggle("off");
+            saveLampState();
+        });
+    });
+
     loadLampState();
+
+    // 🌡️ Get initial house temp
+    updateHouseTemp();
+    setInterval(updateHouseTemp, 10000); // refresh temp every 10s
+
+    // 📍 Geolocation
+    getLocation();
 });
 
-// 📍 Start Location on Page Load
-document.addEventListener("DOMContentLoaded", getLocation);

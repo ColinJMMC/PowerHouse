@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Powerhouse Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,7 +12,7 @@
         <!-- House Temperature -->
         <div class="box house-temp draggable" id="house-temp">
             <div class="title">Huis</div>
-            <div class="circle"><span>19°</span></div>
+            <div class="circle" id="houseTemp">--°</div>
         </div>
 
         <!-- Lamp Status -->
@@ -34,7 +35,6 @@
                 <div class="title">Morgen</div>
                 <div class="circle"><span id="tomorrowTemp">--°</span></div>
             </div>
-
             <!-- Expand Weekly Forecast -->
             <button class="expand-forecast" id="expandWeather">▶ Meer weer</button>
             <div class="weekly-forecast" id="weeklyForecast"></div>
@@ -45,7 +45,6 @@
             <input type="text" id="cityInput" placeholder="Voer een stad in">
             <button id="searchWeather">Zoek Weer</button>
         </div>
-              
 
         <!-- Button to navigate to Wereld Kaart -->
         <div class="box">
@@ -57,7 +56,7 @@
             <img src="image.png" alt="Powerhouse Logo">
         </div>
 
-        <!-- Energy Usage -->
+        <!-- Energie Usage -->
         <div class="box energy-usage draggable" id="energy-usage">
             <div class="title">Energie Verbruik</div>
             <div class="usage">
@@ -66,23 +65,18 @@
                 <div class="time-slot"><div>Avond</div><div class="circle">60%</div></div>
                 <div class="time-slot"><div>Nacht</div><div class="circle">5%</div></div>
             </div>
+            <button id="showChart">Statistieken</button>
+            <div id="energyChart" style="display: none;">
+                <canvas id="myChart"></canvas>
+            </div>
+            <button id="showCircles" style="display: none;">Terug naar Cirkels</button>
         </div>
-    </div>
+        
     
-    <!-- Weather Chatbot UI -->
-<div id="chatbot-container">
-    <div id="chat-header">🌦️ Weather Bot <button onclick="toggleChat()">✖</button></div>
-    <div id="chat-body"></div>
-    <div id="chat-input-container">
-        <input type="text" id="chat-input" placeholder="Vraag over het weer..." onkeypress="handleChat(event)">
-        <button onclick="sendChat()">➤</button>
-    </div>
-</div>
 
+        <!-- Dark/Light Mode Toggle -->
+        <button class="mode-toggle" id="modeToggle">🌞 Light Mode</button>
 
-    <!-- Dark/Light Mode Toggle -->
-    <button class="mode-toggle" id="modeToggle">🌞 Light Mode</button>
-
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
